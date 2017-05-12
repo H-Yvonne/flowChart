@@ -16,7 +16,7 @@
     var FlowChart = function (config) {
         this.init(config);
     };
-
+    // 已处理，待处理，处理中
     FlowChart.prototype = {
         config: {
             mainWrap: '',    //装在canvas容器,
@@ -32,7 +32,7 @@
         },
         init: function (config) {
             var o;
-            for(o in config) {
+            for (o in config) {
                 this.config[o] = config[o];
             }
             this.createElement();
@@ -55,8 +55,8 @@
             pixelRatio = (window.devicePixelRatio || 1) / backingStore;
             ctx.canvas.width = this.size.w * pixelRatio;
             ctx.canvas.height = this.size.h * pixelRatio;
-            ctx.canvas.style.width = this.size.w + "px";
-            ctx.canvas.style.height = this.size.h + "px";
+            ctx.canvas.style.width = this.size.w + 'px';
+            ctx.canvas.style.height = this.size.h + 'px';
             ctx.scale(pixelRatio, pixelRatio);
         },
         //resize canvas
@@ -64,7 +64,7 @@
             this.size = {
                 w: document.querySelector(this.config.mainWrap).clientWidth,
                 h: document.querySelector(this.config.mainWrap).clientHeight
-            }
+            };
             document.querySelector(this.config.mainWrap).appendChild(this.ele);
             this.ctx = this.ele.getContext('2d');
             this.ctx.save();
@@ -76,17 +76,23 @@
             var self = this,
                 len = self.config.nodeList.length;
             var col = (this.size.w - 40) / 160;  // 每行最多显示多少
-            for(var i = 0; i < len; i++) {
+            for (var i = 0; i < len; i++) {
                 var lineNum = Math.floor(i / col),   // 当前节点在第几行
-                    coX = 50 + (i % col) * 160,   // X坐标
                     coY = 50 + lineNum * 110;     // Y坐标
+                // if (lineNum % 2  === 1) {   
+                //     var coX = 50 + (col - 1 - i % col) * 160   // X坐标
+                // } else {
+                //     var coX = 50 + (i % col) * 160   // X坐标
+                // }
+                // 偶数行时节点倒序，lineNum现为行数减1
+                var coX = (lineNum % 2  === 1) ? (50 + (col - 1 - i % col) * 160) : (50 + (i % col) * 160);   // X坐标
                 var nodeText = (self.config.nodeList[i].STATUS == 'done') ? self.config.nodeList[i].NODE_USR : self.config.nodeList[i].NODE_NAME;
                 self.ctx.beginPath();
                 self.ctx.fillStyle = '#fff';  // 背景色
                 self.ctx.fillRect(coX, coY, 100, 50);
                 self.ctx.lineJoin = "round";  // 圆角
                 self.ctx.strokeStyle = "#3e9cfc";  // 边框
-                self.ctx.shadowBlur = 5;  // 阴影
+                self.ctx.shadowBlur = 10;  // 阴影
                 self.ctx.shadowColor = "#e1e1e1";
                 self.ctx.strokeRect(coX, coY, 100, 50);
                 self.ctx.font="14px Microsoft YaHei";   // 文本字号字体
