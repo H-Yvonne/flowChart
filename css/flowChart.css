@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: '.';
+    height: 0;
+    clear: both;
+    display: block;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.test {
+    width: 520px;
+    height: 520px;
+    margin: 0 auto;
+    background-color: #fafafa;
+}
+
+.flow-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 700px;
+    margin: 50px 0 0 300px;
+    font-family: "微软雅黑";
+    /*border-bottom: 2px solid #999;*/
+}
+.flow-dark-line {
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #999;
+    z-index: 10;
+}
+.flow-list {
+    display: inline-block;
+}
+.flow-list .it {
+    position: relative;
+    float: left;
+    width: 110px;
+    margin-top: 35px;
+    list-style: none;
+    border-bottom: 2px solid #999;
+}
+.flow-list .active {
+    border-bottom: 2px solid #3e83da;
+}
+.flow-list-node {
+    display: table;
+    width: 100%;
+    height: 35px;
+    padding-bottom: 20px;
+    text-align: center;
+    line-height: 18px;
+    color: #777;
+}
+.flow-list-nodeInner {
+    display: table-cell;
+    height: 44px;
+    vertical-align: bottom;
+}
+.flow-list-name {
+    position: relative;
+    display: inline-block;
+}
+.flow-list-name u {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.flow-hover-name u {
+    background-color: white;
+    box-shadow: 0 0 10px #4184de;
+    border-radius: 15px;
+}
+.flow-hover-name i {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: -4px;
+    line-height: 0;
+    font-size: 0;
+    border-width: 4px;
+    border-color: white transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+}
+.flow-list-icon {
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 20px;
+    height: 10px;
+    margin-left: -10px;
+    background-color: white;
+    z-index: 11;
+}
+.flow-list-icon i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    background-color: #999;
+    border-radius: 50%;
+}
+.flow-list-count {
+    position: absolute;
+    left: 5px;
+    top: 75px;
+    width: 100px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+    color: #fa9970;
+}
+.flow-list .active .flow-list-icon i {
+    background-color: #3e83da;
+    cursor: pointer;
+}

@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>流程图</title>
+	<link rel="stylesheet" type="text/css" href="./css/flowChart.css">
+</head>
+<body>
+<div class="test">
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/flowchart.js"></script>
+<script type="text/javascript">
+	var NODE_LIST = [
+        {
+            NODE_NAME: '申请人',
+            NODE_USR: '开始',
+            TREND: '',
+            STATUS: 'done'
+        }, {
+            NODE_NAME: '部门负责人',
+            NODE_USR: '测试人1',
+            TREND: 'n',
+            PREVIOS: '申请人',
+            NEXT: '法务部名称确认',
+            STATUS: 'doing'
+        }, {
+            NODE_NAME: '法务部名称确认',
+            NODE_USR: '测试人2',
+            TREND: 'y',
+            PREVIOS: '部门负责人',
+            NEXT: 'END',
+            STATUS: 'will'
+        }, {
+            NODE_NAME: 'END',
+            NODE_USR: '结束',
+            TREND: 'y',
+            PREVIOS: '法务部名称确认',
+            STATUS: 'will'
+        }
+    ];
+
+    new flowChart({
+        mainWrap: 'div.test',
+        nodeList: NODE_LIST
+    });
+</script>
